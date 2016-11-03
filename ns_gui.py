@@ -7,7 +7,7 @@ import tkinter.font
 root = Tk()
 root.config(bg="yellow")
 
-def api(station): # Gemaakt door Rick Vlot, modified by Gijs Willemse 2-11-2016
+def api(station): # Gemaakt door Rick Vlot, modified by Rick Vlot 3-11-2016
     station = e.get()
     text.delete('1.0', 'end')
     api_login = ('rickvlot@hotmail.com', 'kDQOe1pgLOtJXaMMGoieVGrSKQcffSG1sYyrD3GSxCV0wfN_lIkTIA')
@@ -22,8 +22,11 @@ def api(station): # Gemaakt door Rick Vlot, modified by Gijs Willemse 2-11-2016
 
         vertrektijd = vertrek['VertrekTijd']    # 2016-09-27T18:36:00+0200
         vertrektijd = vertrektijd[11:16]        # 18:36
+        vertrekspoor = str(vertrek['VertrekSpoor']['#text'])
+        vervoerder = vertrek['Vervoerder']
+        treintype = vertrek['TreinSoort']
 
-        text.insert('end', 'Om '+vertrektijd+' vertrekt een trein naar '+eindbestemming + '\n')
+        text.insert('end', 'Om '+vertrektijd+' vertrekt een '+treintype+' naar '+eindbestemming+' vanaf spoor '+vertrekspoor + '\n')
     return
 
 
